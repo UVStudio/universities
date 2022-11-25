@@ -46,22 +46,23 @@ const App = () => {
 
   //get API data
   useEffect(() => {
-    const fetchAPIData = async () => {
-      try {
-        const res = await axios.get('http://universities.hipolabs.com/search');
-        const data = res.data;
-        const sorted = data.sort((a: IUniversity, b: IUniversity) =>
-          a.country.localeCompare(b.country),
-        );
-        setSortedFullList(sorted);
-      } catch (error) {
-        Alert.alert('Server Not Working', 'Please try again later.', [
-          {text: 'OK'},
-        ]);
-      }
-    };
     fetchAPIData();
   }, []);
+
+  const fetchAPIData = async () => {
+    try {
+      const res = await axios.get('http://universities.hipolabs.com/search');
+      const data = res.data;
+      const sorted = data.sort((a: IUniversity, b: IUniversity) =>
+        a.country.localeCompare(b.country),
+      );
+      setSortedFullList(sorted);
+    } catch (error) {
+      Alert.alert('Server Not Working', 'Please try again later.', [
+        {text: 'OK'},
+      ]);
+    }
+  };
 
   //pagination indexes
   useEffect(() => {
