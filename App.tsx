@@ -75,7 +75,11 @@ const App = () => {
   }, [selectedPage, sortedFullList]);
 
   if (list.length === 0) {
-    return <ActivityIndicator />;
+    return (
+      <View style={styles.center}>
+        <ActivityIndicator size={'large'} />
+      </View>
+    );
   }
 
   return (
@@ -134,6 +138,11 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
+  center: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   sectionTitle: {
     fontSize: 22,
     fontWeight: '600',
